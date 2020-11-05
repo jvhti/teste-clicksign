@@ -1,14 +1,13 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import Input from "../../UI/Input/Input";
 import classes from './SearchBar.module.scss';
 
 const SearchBar = ({value, onChange}) => {
-  const inputRef = useRef(null);
-
   return (
       <div className={classes.SearchBarContainer}>
-        <label htmlFor={inputRef.current} className="sr-only">Pesquisar</label>
-        <Input ref={inputRef} placeholder="Buscar..." className={classes.SearchBar} value={value} onChange={onChange}/>
+        <label htmlFor="search" className="sr-only">Pesquisar</label>
+        <Input id="search" placeholder="Buscar..." className={classes.SearchBar} value={value} onChange={onChange}
+               type="search"/>
         <button className={classes.SearchButton}><span className="sr-only">Pesquisar</span></button>
       </div>
   );
