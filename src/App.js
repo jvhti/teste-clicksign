@@ -20,9 +20,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!searchTerm)
-      return setFilteredContactList(contactList);
-
     if (debounce)
       clearTimeout(debounce);
 
