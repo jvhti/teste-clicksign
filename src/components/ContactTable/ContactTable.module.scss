@@ -1,0 +1,97 @@
+@import "../../resources/scss/mixins";
+
+.ContactTable {
+  $border-radius: 4px;
+  $break-point: 480px;
+
+  margin: 16px;
+  width: calc(100% - 2 * 16px);
+  background-color: white;
+  border: solid 1px #e1e1e1;
+  border-radius: $border-radius;
+  border-spacing: 0;
+
+  %hide-column {
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  %border-bottom {
+    border-bottom: solid 1px #e1e1e1;
+  }
+
+  & thead tr {
+    & th {
+      @extend %border-bottom;
+      font-size: 13px;
+      padding-top: 16px;
+      padding-bottom: 9px;
+      font-weight: normal;
+      color: #9198af;
+      text-align: left;
+
+      &:first-child {
+        @extend %hide-column;
+      }
+    }
+  }
+
+  & tbody tr {
+    &:not(:last-child) td {
+      @extend %border-bottom;
+    }
+
+    background-color: white;
+    transition: background-color 250ms ease-in-out;
+
+    &.Active, &:hover {
+      background-color: #fff3f2;
+    }
+
+    td {
+      padding: 12px 0;
+      font-size: 14px;
+      color: #2a2d3b;
+
+      &:first-child {
+        width: 8+24+16px;
+
+        @extend %hide-column;
+      }
+
+      &:last-child {
+        text-align: right;
+        padding-right: 16px;
+        width: 80px;
+        @media screen and (max-width: 480px) {
+          width: 61px;
+        }
+      }
+    }
+  }
+}
+
+.ActionButton {
+  @include remove-native-button-style;
+
+  &:not(:last-child) {
+    margin-right: 24px;
+    @media screen and (max-width: 480px) {
+      margin-right: 5px;
+    }
+  }
+}
+
+.ContactIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 16px;
+  color: white;
+  margin-left: 8px;
+}
+
