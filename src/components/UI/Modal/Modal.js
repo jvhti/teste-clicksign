@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './Modal.module.scss';
 import Button from "../Button/Button";
 
-const modal = ({children, confirmLabel = "Salvar"}) => {
+const modal = ({children, title, confirmLabel = "Salvar"}) => {
   return (
       <div className={classes.Modal}>
         <div className={classes.Modal_header}>
-          <h5>Editar Contato</h5>
+          <h5>{title}</h5>
         </div>
         <div className={classes.Modal_body}>
           {children}
