@@ -5,19 +5,32 @@ import ModalManager from "./components/Modals/ModalManager";
 import {getContactsList, setCallback} from './service/newContact';
 import ContactTable from "./components/ContactTable/ContactTable";
 
+let debounce = null;
+
 function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [contactId, setContactId] = useState(null);
   const [contactList, setContactList] = useState([]);
+  const [filteredContactList, setFilteredContactList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const contactListTmp = getContactsList();
-    if (contactListTmp.length !== contactList.length)
-      setContactList(getContactsList());
-
+    setContactList(getContactsList());
     setCallback(setContactList);
-  }, [setContactList, contactList.length]);
+  }, []);
+
+  useEffect(() => {
+    if (!searchTerm)
+      return setFilteredContactList(contactList);
+
+    if (debounce)
+      clearTimeout(debounce);
+
+    debounce = setTimeout(() => {
+      setFilteredContactList(contactList.filter(contact => contact.name.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())));
+      debounce = null;
+    }, 500);
+  }, [searchTerm, contactList, setFilteredContactList]);
 
   const openNewContactModal = () => setActiveModal('newContact');
 
@@ -29,7 +42,8 @@ function App() {
         <ModalManager activeModal={activeModal} closeModal={() => setActiveModal(null)} contactId={contactId}/>
 
         {contactList.length ?
-            <ContactTable contactList={contactList} setActiveModal={setActiveModal} setContactId={setContactId}/> :
+            <ContactTable contactList={filteredContactList} setActiveModal={setActiveModal}
+                          setContactId={setContactId}/> :
             <EmptyPage openNewContactModal={openNewContactModal}/>}
       </React.Fragment>
   );
