@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Modal.module.scss';
 import Button from "../Button/Button";
 
-const modal = ({children, title, confirmLabel = "Salvar"}) => {
+const modal = ({children, title, confirmLabel = "Salvar", cancelAction}) => {
   return (
       <div className={classes.Modal}>
         <div className={classes.Modal_header}>
@@ -12,7 +12,7 @@ const modal = ({children, title, confirmLabel = "Salvar"}) => {
           {children}
         </div>
         <div className={classes.Modal_footer}>
-          <Button className={classes.CancelButton}>Cancelar</Button>
+          <Button className={classes.CancelButton} onClick={cancelAction}>Cancelar</Button>
           <Button>{confirmLabel}</Button>
         </div>
       </div>

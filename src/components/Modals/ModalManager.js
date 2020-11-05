@@ -3,21 +3,21 @@ import ConfirmDeletionModal from "./ConfirmDeletionModal";
 import ContactModal from "./ContactModal";
 import Backdrop from "../UI/Backdrop/Backdrop";
 
-function modalManager({activeModal}) {
+function modalManager({activeModal, closeModal}) {
   let modal;
 
   if (activeModal === "confirmDeletion")
-    modal = <ConfirmDeletionModal/>;
+    modal = <ConfirmDeletionModal cancelAction={closeModal}/>;
   else if (activeModal === "newContact")
-    modal = <ContactModal/>;
+    modal = <ContactModal cancelAction={closeModal}/>;
   else if (activeModal === "editContact")
-    modal = <ContactModal isEdition/>;
+    modal = <ContactModal isEdition cancelAction={closeModal}/>;
 
   if (modal) {
     return (
         <React.Fragment>
           {modal}
-          <Backdrop/>
+          <Backdrop onClick={closeModal}/>
         </React.Fragment>
     );
   }
