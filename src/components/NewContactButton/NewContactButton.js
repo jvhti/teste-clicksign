@@ -8,7 +8,7 @@ const newContactButton = ({className, show = true, onClick}) => {
               style={!show ? {minWidth: 'auto'} : undefined}>
     {!show ||
     <Button className={classes.NewContactButton} onClick={onClick}>
-      <img src={plusIcon} alt="" aria-hidden="true"/>
+      <img width={16} height={16} src={plusIcon} alt="" aria-hidden="true"/>
       Criar Contato
     </Button>
     }

@@ -6,7 +6,7 @@ const logo = () => {
   return (
       <h1 className={classes.Logo}>
         <a href="/">
-          <img src={LogoSVG} alt="Ubook"/>
+          <img width={147} height={32} src={LogoSVG} alt="Ubook"/>
         </a>
       </h1>
   );

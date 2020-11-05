@@ -15,8 +15,10 @@ const contactItem = ({name, email, number, deleteAction, editAction, isHighlight
         <td>{email}</td>
         <td>{number}</td>
         <td>
-          <button className={classes.ActionButton} onClick={editAction}><img src={editIcon} alt="Editar"/></button>
-          <button className={classes.ActionButton} onClick={deleteAction}><img src={deleteIcon} alt="Excluir"/></button>
+          <button className={classes.ActionButton} onClick={editAction}><img width={16} height={16} src={editIcon}
+                                                                             alt="Editar"/></button>
+          <button className={classes.ActionButton} onClick={deleteAction}><img width={16} height={16} src={deleteIcon}
+                                                                               alt="Excluir"/></button>
         </td>
       </tr>
   );
