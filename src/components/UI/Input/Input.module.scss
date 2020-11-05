@@ -1,0 +1,10 @@
+@import "../../../resources/scss/variables";
+
+.Input {
+  height: 32px;
+  border-radius: 4px;
+  border: solid 1px $input-border-color;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 8px;
+}

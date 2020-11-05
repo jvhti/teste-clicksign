@@ -1,0 +1,18 @@
+@import "../../../resources/scss/variables";
+
+.Button {
+  color: white;
+  background-color: $button-background-color;
+  border-radius: 16px;
+  height: 32px;
+  border: solid 1px rgba(255, 255, 255, 0.16);
+  padding: 8px 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
