@@ -13,6 +13,8 @@ function saveContact(name, email, cellphone) {
 
   contacts.push({name, email, cellphone});
 
+  setLastSaved(contacts.length - 1);
+
   saveContactsList(contacts);
 }
 
@@ -34,6 +36,11 @@ function editContact(id, name, email, cellphone) {
 
 function setCallback(callback) {
   window.setContactList = callback;
+}
+
+function setLastSaved(id) {
+  window.lastSaved = id;
+  window.timestamp = new Date();
 }
 
 export {
