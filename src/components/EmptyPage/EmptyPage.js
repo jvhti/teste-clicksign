@@ -13,4 +13,4 @@ const emptyPage = ({openNewContactModal}) => {
   );
 };
 
-export default emptyPage;
+export default React.memo(emptyPage);

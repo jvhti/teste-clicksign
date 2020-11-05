@@ -14,4 +14,4 @@ const topBar = ({showCreateContact, openNewContactModal}) => {
   );
 };
 
-export default topBar;
+export default React.memo(topBar);

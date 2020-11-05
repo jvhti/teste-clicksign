@@ -15,4 +15,4 @@ const newContactButton = ({className, show = true, onClick}) => {
   </div>
 };
 
-export default newContactButton;
+export default React.memo(newContactButton);

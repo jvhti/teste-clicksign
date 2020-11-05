@@ -11,4 +11,4 @@ const searchBar = () => {
   );
 };
 
-export default searchBar;
+export default React.memo(searchBar);
