@@ -53,10 +53,15 @@ const ContactTable = ({contactList, setActiveModal, setContactId}) => {
         </tr>
         </thead>
         <tbody>
-        {contactList.map((contact) => <ContactItem key={contact.id} name={contact.name} email={contact.email}
-                                                   number={contact.cellphone} deleteAction={deleteAction(contact.id)}
-                                                   editAction={editAction(contact.id)}
-                                                   isHighlighted={isHighlighted(contact.id, forceUpdate)}/>)}
+        {contactList.length ? contactList.map((contact) => <ContactItem key={contact.id} name={contact.name}
+                                                                        email={contact.email}
+                                                                        number={contact.cellphone}
+                                                                        deleteAction={deleteAction(contact.id)}
+                                                                        editAction={editAction(contact.id)}
+                                                                        isHighlighted={isHighlighted(contact.id, forceUpdate)}/>) :
+            (<tr>
+              <td colSpan={5} style={{textAlign: 'center'}}>Nenhum resultado...</td>
+            </tr>)}
         </tbody>
       </table>
   );
