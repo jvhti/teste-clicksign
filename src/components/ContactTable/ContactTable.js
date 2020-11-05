@@ -4,12 +4,17 @@ import ContactItem from "./ContactItem";
 
 const ContactTable = ({contactList, setActiveModal, setContactId}) => {
 
-  const deleteAction = useCallback(() => {
-    return (i) => {
-      return () => {
-        setActiveModal('confirmDeletion');
-        setContactId(i);
-      };
+  const deleteAction = useCallback((i) => {
+    return () => {
+      setActiveModal('confirmDeletion');
+      setContactId(i);
+    };
+  }, [setActiveModal, setContactId]);
+
+  const editAction = useCallback((i) => {
+    return () => {
+      setActiveModal('editContact');
+      setContactId(i);
     };
   }, [setActiveModal, setContactId]);
 
@@ -26,7 +31,8 @@ const ContactTable = ({contactList, setActiveModal, setContactId}) => {
         </thead>
         <tbody>
         {contactList.map((contact, i) => <ContactItem key={i} name={contact.name} email={contact.email}
-                                                      number={contact.cellphone} deleteAction={deleteAction()(i)}/>)}
+                                                      number={contact.cellphone} deleteAction={deleteAction(i)}
+                                                      editAction={editAction(i)}/>)}
         </tbody>
       </table>
   );

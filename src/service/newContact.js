@@ -22,8 +22,17 @@ function deleteContact(id) {
   saveContactsList(contacts);
 }
 
+function editContact(id, name, email, cellphone) {
+  const contacts = getContactsList();
+
+  contacts.splice(id, 1, {name, email, cellphone});
+
+  saveContactsList(contacts);
+}
+
 export {
   saveContact,
   getContactsList,
-  deleteContact
+  deleteContact,
+  editContact
 };

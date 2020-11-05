@@ -1,17 +1,32 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Modal from "../../components/UI/Modal/Modal";
 import InputWithLabel from "../../components/UI/InputWithLabel/InputWithLabel";
-import {saveContact} from "../../service/newContact";
+import {editContact, getContactsList, saveContact} from "../../service/newContact";
 
-const ContactModal = ({isEdition, cancelAction}) => {
+const ContactModal = ({isEdition, cancelAction, contactId}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cellphone, setCellphone] = useState('');
 
+  useEffect(() => {
+    if (!isEdition) return;
+
+    const contacts = getContactsList();
+    const contact = contacts[contactId];
+
+    setName(contact.name);
+    setEmail(contact.email);
+    setCellphone(contact.cellphone);
+  }, [contactId, isEdition]);
+
   const saveAction = useCallback(() => {
-    saveContact(name, email, cellphone);
+    if (!isEdition)
+      saveContact(name, email, cellphone);
+    else
+      editContact(contactId, name, email, cellphone);
+
     cancelAction();
-  }, [name, email, cellphone, cancelAction]);
+  }, [name, email, cellphone, cancelAction, contactId, isEdition]);
 
   return (
       <Modal title={(isEdition ? "Editar" : "Criar novo") + " Contato"} confirmAction={saveAction}
