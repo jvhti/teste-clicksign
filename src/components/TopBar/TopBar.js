@@ -4,11 +4,11 @@ import classes from './TopBar.module.scss';
 import SearchBar from "./SearchBar/SearchBar";
 import NewContactButton from "../NewContactButton/NewContactButton";
 
-const topBar = ({showCreateContact}) => {
+const topBar = ({showCreateContact, openNewContactModal}) => {
   return (
       <header className={classes.TopBar}>
         <Logo/>
-        <NewContactButton show={!!showCreateContact}/>
+        <NewContactButton show={!!showCreateContact} onClick={openNewContactModal}/>
         <SearchBar/>
       </header>
   );

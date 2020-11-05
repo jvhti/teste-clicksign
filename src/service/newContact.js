@@ -15,5 +15,6 @@ function saveContact(name, email, cellphone) {
 }
 
 export {
-  saveContact
+  saveContact,
+  getContactsList
 };
