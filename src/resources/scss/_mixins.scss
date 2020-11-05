@@ -1,0 +1,5 @@
+@mixin remove-native-button-style {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
