@@ -1,6 +1,6 @@
 import React from "react";
 import ConfirmDeletionModal from "./ConfirmDeletionModal";
-import ContactModal from "./ContactModal";
+import ContactModal from "../../containers/Modals/ContactModal";
 import Backdrop from "../UI/Backdrop/Backdrop";
 
 function modalManager({activeModal, closeModal}) {
