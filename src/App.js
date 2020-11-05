@@ -9,6 +9,7 @@ function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [contactId, setContactId] = useState(null);
   const [contactList, setContactList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const contactListTmp = getContactsList();
@@ -22,7 +23,8 @@ function App() {
 
   return (
       <React.Fragment>
-        <TopBar showCreateContact={contactList.length} openNewContactModal={openNewContactModal}/>
+        <TopBar showCreateContact={contactList.length} openNewContactModal={openNewContactModal}
+                setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
 
         <ModalManager activeModal={activeModal} closeModal={() => setActiveModal(null)} contactId={contactId}/>
 
