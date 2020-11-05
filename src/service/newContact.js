@@ -3,6 +3,8 @@ function getContactsList() {
 }
 
 function saveContactsList(contactsList) {
+  window.setContactList(contactsList);
+
   localStorage.setItem('contacts', JSON.stringify(contactsList));
 }
 
@@ -30,9 +32,14 @@ function editContact(id, name, email, cellphone) {
   saveContactsList(contacts);
 }
 
+function setCallback(callback) {
+  window.setContactList = callback;
+}
+
 export {
   saveContact,
   getContactsList,
   deleteContact,
-  editContact
+  editContact,
+  setCallback
 };

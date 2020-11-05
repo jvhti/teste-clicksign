@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import TopBar from "./components/TopBar/TopBar";
 import EmptyPage from "./components/EmptyPage/EmptyPage";
 import ModalManager from "./components/Modals/ModalManager";
-import {getContactsList} from './service/newContact';
+import {getContactsList, setCallback} from './service/newContact';
 import ContactTable from "./components/ContactTable/ContactTable";
 
 function App() {
@@ -14,6 +14,8 @@ function App() {
     const contactListTmp = getContactsList();
     if (contactListTmp.length !== contactList.length)
       setContactList(getContactsList());
+
+    setCallback(setContactList);
   }, [setContactList, contactList.length]);
 
   const openNewContactModal = () => setActiveModal('newContact');
