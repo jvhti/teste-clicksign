@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import classes from './ContactTable.module.scss';
 import ContactItem from "./ContactItem";
 
-const contactTable = () => {
+const ContactTable = ({contactList, setActiveModal, setContactId}) => {
+
+  const deleteAction = useCallback(() => {
+    return (i) => {
+      return () => {
+        setActiveModal('confirmDeletion');
+        setContactId(i);
+      };
+    };
+  }, [setActiveModal, setContactId]);
+
   return (
       <table className={classes.ContactTable}>
         <thead>
@@ -15,11 +25,11 @@ const contactTable = () => {
         </tr>
         </thead>
         <tbody>
-        <ContactItem name="Alana" email="alana@email.com" number="(11) 12345-6789"/>
-        <ContactItem name="Henrique" email="alana@email.com" number="(11) 12345-6789"/>
+        {contactList.map((contact, i) => <ContactItem key={i} name={contact.name} email={contact.email}
+                                                      number={contact.cellphone} deleteAction={deleteAction()(i)}/>)}
         </tbody>
       </table>
   );
 };
 
-export default contactTable;
+export default React.memo(ContactTable);

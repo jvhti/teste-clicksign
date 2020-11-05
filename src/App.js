@@ -7,6 +7,7 @@ import ContactTable from "./components/ContactTable/ContactTable";
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
+  const [contactId, setContactId] = useState(null);
   const [contactList, setContactList] = useState([]);
 
   useEffect(() => {
@@ -21,9 +22,10 @@ function App() {
       <React.Fragment>
         <TopBar showCreateContact={contactList.length} openNewContactModal={openNewContactModal}/>
 
-        <ModalManager activeModal={activeModal} closeModal={() => setActiveModal(null)}/>
+        <ModalManager activeModal={activeModal} closeModal={() => setActiveModal(null)} contactId={contactId}/>
 
-        {contactList.length ? <ContactTable contactList={contactList}/> :
+        {contactList.length ?
+            <ContactTable contactList={contactList} setActiveModal={setActiveModal} setContactId={setContactId}/> :
             <EmptyPage openNewContactModal={openNewContactModal}/>}
       </React.Fragment>
   );
