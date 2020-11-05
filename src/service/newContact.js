@@ -11,25 +11,25 @@ function saveContactsList(contactsList) {
 function saveContact(name, email, cellphone) {
   const contacts = getContactsList();
 
-  contacts.push({name, email, cellphone});
+  contacts.push({name, email, cellphone, id: new Date().getTime()});
 
-  setLastSaved(contacts.length - 1);
+  setLastSaved(contacts[contacts.length - 1].id);
 
   saveContactsList(contacts);
 }
 
 function deleteContact(id) {
-  const contacts = getContactsList();
+  let contacts = getContactsList();
 
-  contacts.splice(id, 1);
+  contacts = contacts.filter(contact => contact.id !== id);
 
   saveContactsList(contacts);
 }
 
 function editContact(id, name, email, cellphone) {
-  const contacts = getContactsList();
+  let contacts = getContactsList();
 
-  contacts.splice(id, 1, {name, email, cellphone});
+  contacts = contacts.map(contact => contact.id !== id ? contact : {name, email, cellphone, id});
 
   saveContactsList(contacts);
 }

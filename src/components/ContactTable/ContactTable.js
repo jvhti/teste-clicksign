@@ -5,20 +5,20 @@ import useForceUpdate from "../../hooks/forceUpdateHook";
 
 let indexHighlighted = [];
 
-function isHighlighted(i, forceUpdate) {
-  if (indexHighlighted.find(x => x === i)) return true;
-  if (window.lastSaved !== i || !window.timestamp) return false;
+function isHighlighted(id, forceUpdate) {
+  if (indexHighlighted.find(x => x === id)) return true;
+  if (window.lastSaved !== id || !window.timestamp) return false;
 
   let t = new Date(window.timestamp);
   t.setSeconds(t.getSeconds() + 10);
 
   if (t > new Date()) {
     setTimeout(() => {
-      indexHighlighted = indexHighlighted.filter((ind) => ind !== i);
+      indexHighlighted = indexHighlighted.filter((ind) => ind !== id);
       forceUpdate();
     }, (t.getTime() - new Date().getTime()) + 5);
 
-    indexHighlighted.push(i);
+    indexHighlighted.push(id);
     return true;
   }
   return false;
@@ -54,9 +54,9 @@ const ContactTable = ({contactList, setActiveModal, setContactId}) => {
         </thead>
         <tbody>
         {contactList.map((contact, i) => <ContactItem key={i} name={contact.name} email={contact.email}
-                                                      number={contact.cellphone} deleteAction={deleteAction(i)}
-                                                      editAction={editAction(i)}
-                                                      isHighlighted={isHighlighted(i, forceUpdate)}/>)}
+                                                      number={contact.cellphone} deleteAction={deleteAction(contact.id)}
+                                                      editAction={editAction(contact.id)}
+                                                      isHighlighted={isHighlighted(contact.id, forceUpdate)}/>)}
         </tbody>
       </table>
   );

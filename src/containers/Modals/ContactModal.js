@@ -12,7 +12,7 @@ const ContactModal = ({isEdition, cancelAction, contactId}) => {
     if (!isEdition) return;
 
     const contacts = getContactsList();
-    const contact = contacts[contactId];
+    const contact = contacts.find(contact => contact.id === contactId);
 
     setName(contact.name);
     setEmail(contact.email);
