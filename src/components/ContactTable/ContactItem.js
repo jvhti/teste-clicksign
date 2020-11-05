@@ -22,4 +22,4 @@ const contactItem = ({name, email, number, deleteAction, editAction, isHighlight
   );
 };
 
-export default contactItem;
+export default React.memo(contactItem);
