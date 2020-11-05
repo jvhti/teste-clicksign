@@ -30,7 +30,7 @@ const ContactModal = ({isEdition, cancelAction, contactId}) => {
 
   return (
       <Modal title={(isEdition ? "Editar" : "Criar novo") + " Contato"} confirmAction={saveAction}
-             cancelAction={cancelAction}>
+             cancelAction={cancelAction} confirmEnable={(name + email + cellphone).length}>
         <InputWithLabel label="Nome" value={name} onChange={(e) => {
           setName(e.target.value);
         }}/>
