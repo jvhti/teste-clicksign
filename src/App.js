@@ -27,7 +27,11 @@ function App() {
       clearTimeout(debounce);
 
     debounce = setTimeout(() => {
-      setFilteredContactList(contactList.filter(contact => contact.name.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())));
+      if (!searchTerm)
+        setFilteredContactList(contactList);
+      else
+        setFilteredContactList(contactList.filter(contact => contact.name.toLowerCase().trim().includes(searchTerm.toLowerCase().trim())));
+
       debounce = null;
     }, 500);
   }, [searchTerm, contactList, setFilteredContactList]);
