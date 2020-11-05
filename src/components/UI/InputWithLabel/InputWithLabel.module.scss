@@ -1,0 +1,12 @@
+.InputWithLabel {
+
+  &:not(:last-child) input {
+    margin-bottom: 16px;
+  }
+
+  &_Input {
+    margin-top: 4px;
+    display: block;
+    width: 100%;
+  }
+}
