@@ -25,4 +25,4 @@ function modalManager({activeModal, closeModal}) {
   return null;
 }
 
-export default modalManager;
+export default React.memo(modalManager);

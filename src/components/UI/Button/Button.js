@@ -7,4 +7,4 @@ const button = ({children, className, onClick}) => {
   return <button className={allClassName} onClick={onClick}>{children}</button>
 };
 
-export default button;
+export default React.memo(button);

@@ -11,4 +11,4 @@ const input = ({
                 onChange={onChange} placeholder={placeholder}/>
 };
 
-export default input;
+export default React.memo(input);

@@ -11,4 +11,4 @@ const inputWithLabel = ({label, maxWidth, value, onChange}) => {
   );
 };
 
-export default inputWithLabel;
+export default React.memo(inputWithLabel);
