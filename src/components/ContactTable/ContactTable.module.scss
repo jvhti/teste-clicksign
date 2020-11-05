@@ -75,6 +75,12 @@
 .ActionButton {
   @include remove-native-button-style;
 
+  transition: filter 300ms ease-in-out;
+
+  &:hover, &:focus {
+    filter: brightness(0.5);
+  }
+
   &:not(:last-child) {
     margin-right: 24px;
     @media screen and (max-width: 480px) {
